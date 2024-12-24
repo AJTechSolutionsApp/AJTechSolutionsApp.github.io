@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HappyHours">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512x512.png">
+    <link rel="apple-touch-startup-image" href="icons/splash.png">
+    <link rel="manifest" href="/manifest.json">
     <title>Hora Feliz</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
         body {
             margin: 0;
             padding: 0;
@@ -91,7 +97,7 @@
                 </select>
                 <input type="number" id="unidadesCombinado" placeholder="Unidades consumidas" min="0">
                 <p class="subtle-message">Una copa se estima en 65ml, depende de tu camarero de confianza</p>
-                <button onclick="Android.onCalculateButtonPressed(); calcularResultado('combinado')" class="big-button">Calcular</button>
+                <button onclick="calcularResultado('tipoDebida')"; calcularResultado('combinado')" class="big-button">Calcular</button>
                 <button class="back-button" onclick="volverInicio()">Atrás</button>
             </div>
 
@@ -175,5 +181,10 @@
 </div>
 
 <script src="script.js"></script>
+    <script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+}
+</script>
 </body>
 </html>
