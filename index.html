@@ -13,7 +13,7 @@
     <title>Hora Feliz</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <style>
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -62,7 +62,7 @@
                     <option value="330" selected>Tercio (330ml)</option>
                 </select>
                 <input type="number" id="unidadesCerveza" placeholder="Unidades consumidas" min="0">
-                <button onclick="Android.onCalculateButtonPressed(); calcularResultado('cerveza')" class="big-button">Calcular</button>
+                <button onclick="calcularResultado('cerveza')" class="big-button">Calcular</button>
                 <button class="back-button" onclick="volverInicio()">Atrás</button>
             </div>
 
@@ -75,7 +75,7 @@
                 </select>
                 <input type="number" id="unidadesVino" placeholder="Unidades consumidas" min="0">
                 <p>Una copa se estima en 150ml</p>
-                <button onclick="Android.onCalculateButtonPressed(); calcularResultado('vino')" class="big-button">Calcular</button>
+                <button onclick="calcularResultado('vino')" class="big-button">Calcular</button>
                 <button class="back-button" onclick="volverInicio()">Atrás</button>
             </div>
 
@@ -96,7 +96,7 @@
                 </select>
                 <input type="number" id="unidadesCombinado" placeholder="Unidades consumidas" min="0">
                 <p class="subtle-message">Una copa se estima en 65ml, depende de tu camarero de confianza</p>
-                <button onclick="calcularResultado('tipoDebida')"; calcularResultado('combinado')" class="big-button">Calcular</button>
+                <button onclick="calcularResultado('combinado')" class="big-button">Calcular</button>
                 <button class="back-button" onclick="volverInicio()">Atrás</button>
             </div>
 
