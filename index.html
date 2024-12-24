@@ -39,7 +39,103 @@
                 <button onclick="siguientePantalla('vino')" style="font-size: 18px;">Vino 🍷</button>
                 <button onclick="siguientePantalla('combinado')" style="font-size: 18px;">Combinado 🍸</button>
             </div>
-            <!-- Resto de las pantallas aquí -->
+            <div id="screen2Cerveza" class="screen">
+                <h1>Cerveza 🍺</h1>
+                <select id="tipoCerveza">
+                    <option value="200">Cuarto (200ml)</option>
+                    <option value="220">Quinto (220ml)</option>
+                    <option value="330" selected>Tercio (330ml)</option>
+                </select>
+                <input type="number" id="unidadesCerveza" placeholder="Unidades consumidas" min="0">
+                <button onclick="calcularResultado('cerveza')" class="big-button">Calcular</button>
+                <button class="back-button" onclick="volverInicio()">Atrás</button>
+            </div>
+
+            <div id="screen2Vino" class="screen">
+                <h1>Vino 🍷</h1>
+                <select id="tipoVino">
+                    <option value="frizzante">Frizzante</option>
+                    <option value="tinto" selected>Tinto</option>
+                    <option value="blanco">Blanco</option>
+                </select>
+                <input type="number" id="unidadesVino" placeholder="Unidades consumidas" min="0">
+                <p>Una copa se estima en 150ml</p>
+                <button onclick="calcularResultado('vino')" class="big-button">Calcular</button>
+                <button class="back-button" onclick="volverInicio()">Atrás</button>
+            </div>
+
+            <div id="screen2Combinado" class="screen">
+                <h1>Combinado 🍸</h1>
+                <select id="tipoCombinado">
+                    <option value="ron">Ron</option>
+                    <option value="ginebra">Ginebra</option>
+                    <option value="vodka">Vodka</option>
+                    <option value="whisky">Whisky</option>
+                </select>
+                <select id="combinadaCon">
+                    <option value="cola">Cola</option>
+                    <option value="colaZero">Cola Zero</option>
+                    <option value="gaseosaLimonNaranja">Gaseosa Limón/Naranja</option>
+                    <option value="gaseosa">Gaseosa</option>
+                    <option value="solo">Solo</option>
+                </select>
+                <input type="number" id="unidadesCombinado" placeholder="Unidades consumidas" min="0">
+                <p class="subtle-message">Una copa se estima en 65ml, depende de tu camarero de confianza</p>
+                <button onclick="calcularResultado('combinado')" class="big-button">Calcular</button>
+                <button class="back-button" onclick="volverInicio()">Atrás</button>
+            </div>
+
+            <div id="screen3" class="screen">
+                <h1>Resultado</h1>
+                <button class="info-button" onclick="mostrarInformacion('calorias')">i</button>
+
+                <p class="consumo-mensaje">Has consumido aproximadamente</p>
+                <p class="calorias"><span id="resultadoCalorias">0</span> Kcal.</p>
+
+                <p>Has consumido aproximadamente <span class="azucar" id="resultadoAzucar">0.00</span> gr de azúcar.</p>
+
+                <div id="registroConsumos" class="registro-consumos"></div>
+
+                <button onclick="volverInicio()">Volver al inicio</button>
+                <button onclick="anadirOtraBebida()">Añadir otra bebida</button>
+            </div>
+        </div>
+
+        <div id="alcoholimetro" style="display: none;">
+            <div style="position: relative;">
+                <button class="info-button" onclick="mostrarInformacion('alcoholimetro')">i</button>
+            </div>
+
+            <div id="alcoholimetroMensaje" style="display: block;">
+                <div style="text-align: center; padding: 20px; color: #666;">
+                    <i class="fas fa-tint" style="font-size: 48px; margin-bottom: 15px; color: #999;"></i>
+                    <p style="font-size: 18px; margin-bottom: 10px;">No hay calculos de alcohol en sangre disponibles aún</p>
+                    <p style="font-size: 14px;">Calcula alguna bebida para comprobar su alcohol en sangre</p>
+                </div>
+            </div>
+
+            <div id="alcoholimetroResultados" style="display: none;">
+                <p id="nivelAlcoholMensaje" style="text-align: center;">Tu nivel de alcohol en sangre es aproximadamente:</p>
+                <p id="nivelAlcoholValor" style="text-align: center; font-size: 3rem; font-weight: bold;"></p>
+
+                <div id="advertencia" class="advertencia-amarilla">
+                    Tu nivel de alcohol está por debajo del límite legal, pero recuerda que es mejor no conducir si has bebido.
+                </div>
+
+                <div id="taxiNumber">
+                    <a href="#" onclick="extraerYLlamarTaxi(); return false;">Llamar a taxi</a>
+                </div>
+
+                <div id="trustedPhone">
+                    <!-- El número de teléfono de confianza se insertará aquí dinámicamente -->
+                </div>
+
+            </div>
+        </div>
+
+        <div id="registros" style="display: none;">
+            <h2></h2>
+            <div id="registrosContenido"></div>
         </div>
     </div>
 
