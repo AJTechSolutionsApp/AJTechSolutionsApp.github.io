@@ -1,107 +1,1019 @@
-/* Reset y estilos base */
-* {
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Estilos generales del body y container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    background: #fff;
+    padding-top: 50px; /* Altura del banner */
 }
 
 .container {
-    max-width: 100%;
-    padding: env(safe-area-inset-top) 15px calc(env(safe-area-inset-bottom) + 60px);
-    margin: 0 auto;
-    min-height: 100vh;
-}
-
-/* Estilos de género */
-.gender-symbols {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.gender-symbol {
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    fill: #666;
-    transition: fill 0.3s;
-}
-
-.gender-symbol.selected {
-    fill: #28a745;
-}
-
-/* Botones y campos */
-button, input, select {
     width: 100%;
-    height: 50px;
-    margin: 10px 0;
-    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2cm 20px 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px; /* Altura del banner */
+}
+
+/* Estilos generales para pantallas */
+.screen {
+    display: none;
+    width: 100%;
+}
+
+.active {
+    display: block;
+}
+
+/* Estilos del título principal */
+h1 {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Estilos específicos para la primera pantalla (screen1) */
+#screen1 button {
+    font-size: 2rem !important;
+    width: 95%;
+    max-width: 370px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: latido 1.5s ease-in-out infinite;
+}
+
+#screen1 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#screen1 button span {
+    font-size: 2.75rem;
+    vertical-align: middle;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+#screen1 button span,
+#screen1 button::before {
+    font-size: 2.3rem !important;
+}
+
+/* Estilos generales para inputs, selects y botones */
+select, input, button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+input[readonly] {
+    background-color: #f9f9f9;
+    color: #888;
+    cursor: not-allowed;
 }
 
 button {
-    background: #28a745;
+    background-color: #28a745;
     color: white;
     border: none;
-    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    font-weight: bold;
 }
 
-/* Tabs */
+button:hover {
+    background-color: #218838;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+/* Estilos específicos para el input de peso */
+#peso {
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+    padding: 1.3rem;
+}
+
+/* Estilos para la segunda pantalla (cerveza, vino, combinado) */
+/* Pantalla de cerveza */
+#screen2Cerveza select,
+#screen2Cerveza input {
+    /* Estilos específicos para los inputs y selects de la pantalla de cerveza */
+}
+
+#unidadesCerveza {
+    /* Estilos para el input de unidades de cerveza */
+}
+
+#tipoCerveza {
+    /* Estilos para el select de tipo de cerveza */
+}
+
+/* Pantalla de vino */
+#screen2Vino select,
+#screen2Vino input {
+    /* Estilos específicos para los inputs y selects de la pantalla de vino */
+}
+
+#unidadesVino {
+    /* Estilos para el input de unidades de vino */
+}
+
+/* Pantalla de combinado */
+#screen2Combinado select,
+#screen2Combinado input {
+    /* Estilos específicos para los inputs y selects de la pantalla de combinado */
+}
+
+#unidadesCombinado {
+    /* Estilos para el input de unidades de combinado */
+}
+
+#combinadaCon {
+    /* Estilos para el select de tipo de combinado */
+}
+
+/* Botón de cálculo para todas las pantallas de bebidas */
+#screen2Cerveza button,
+#screen2Vino button,
+#screen2Combinado button {
+    /* Estilos para los botones de cálculo en las pantallas de bebidas */
+}
+
+/* Estilos para mensajes y advertencias */
+#screen2Combinado .subtle-message {
+    color: #888;
+    font-size: 1rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+#screen2Vino p {
+    color: #888;
+    font-size: 1.4rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para advertencias según alcohol*/
+
+#advertencia {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.4;
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#advertencia.advertencia-amarilla {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 3px solid #ffeeba;
+}
+
+#advertencia.advertencia-roja {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#taxiNumber {
+    text-align: center;
+    margin-top: 50px; /* Aumenta la distancia del mensaje superior */
+}
+
+#taxiNumber a {
+    display: inline-block;
+    padding: 20px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+#taxiNumber a:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilos para el mensaje de autorización de ubicación */
+
+#nota {
+    font-style: italic;
+    color: #666;
+    font-size: 1.4rem;
+    margin-top: 4rem;
+}
+
+#resultado {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para la transición entre pantallas */
+.transition-screen {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilos para el registro de consumos */
+.registro-consumos {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.registro-consumos p {
+    margin: 0.5rem 0;
+}
+
+/* Estilos para el contenedor de anuncios */
+#adContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Altura del banner */
+    background-color: #f0f0f0;
+    z-index: 998;
+    display: none; /* Oculta el banner por defecto */
+}
+
+
+/* Estilos para las pestañas */
 .tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
-    background: white;
-    border-top: 1px solid #ddd;
-    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #fff;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+    padding: 25px 0 45px; /* Reducido el padding superior y aumentado el inferior */
+    z-index: 1000;
 }
 
 .tab {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-decoration: none;
+    color: #919191;
+    font-size: 15px;
+    transition: color 0.3s;
+    padding-top: 20px; /* Añadido padding superior */
+}
+
+.tab:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: #e0e0e0;
 }
 
 .tab.active {
-    color: #28a745;
+    color: #128C7E;
 }
 
-/* Pantallas */
-.screen {
-    display: none;
-    padding: 20px 0;
+.tab-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+     align-items: center;
 }
 
-.screen.active {
+
+/* Ajustes para el contenido principal */
+#content {
+    padding-bottom: 80px; /* Ajusta según la altura de tus pestañas */
+}
+
+/* Asegurarse de que el contenido no se oculte detrás de las pestañas */
+body::after {
+    content: '';
     display: block;
+    height: 80px; /* Debe coincidir con la altura de las pestañas */
 }
 
-/* Media queries específicas para iOS */
-@supports (-webkit-touch-callout: none) {
+/* Eliminar estilos innecesarios */
+.tabs .tab {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+.tabs .tab:hover,
+.tabs .tab:active,
+.tabs .tab:focus {
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estilos para el contenido principal */
+#content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: calc(90px + 0.8cm + 30px);
+    margin-top: 2cm;
+}
+
+/* Estilos para los símbolos de género */
+.gender-symbols {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.gender-symbol {
+    width: 75px;
+    height: 75px;
+    margin: 0 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, fill 0.3s ease;
+    fill: #ccc;
+}
+
+.gender-symbol:hover {
+    transform: scale(1.4);
+}
+
+.gender-symbol.selected {
+    fill: #28a745;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Estilos para el botón de información */
+.info-button {
+        position: absolute;
+        top: 120px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        font-weight: bold;
+        color: #666;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s;
+        padding: 0;
+        line-height: 24px;
+        text-align: center;
+    }
+
+.info-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilos para la pantalla de información */
+.info-screen {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.info-content {
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: flex;
+}
+
+.info-title {
+    font-size: 1.7em;
+    margin-bottom: 15px;
+}
+
+.info-message {
+    font-size: 1.3em;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.close-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+/* Estilos específicos para screen3 */
+/* Estilos para los botones de la pantalla 3 */
+#screen3 button {
+    font-size: 2rem !important;
+    width: 95%;
+    max-width: 370px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#screen3 button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    background-color: #218838;
+}
+
+#screen3 button:active {
+    transform: scale(0.98);
+}
+
+#screen3 button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+body::before {
+    content: none;
+}
+
+.registro-consumos {
+    margin-top: 1.5rem;
+    margin-bottom: 4rem; /* Aumenta este valor para más espacio */
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+#alcoholimetroMensaje {
+    position: relative;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-top: 0px;
+}
+
+#alcoholimetroMensaje i.fa-tint {
+    color: #dc3545;
+}
+
+#nivelAlcoholMensaje {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#nivelAlcoholValor {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#nivelAlcoholValor.por-debajo-limite {
+    color: #28a745; /* Verde */
+}
+
+#nivelAlcoholValor.sobre-limite {
+    color: #dc3545; /* Rojo */
+}
+
+/* Asegurarse de que el contenedor de la pantalla de Resultado tenga posición relativa */
+#screen3 {
+    position: relative;
+}
+
+/* Estilos para el botón de volver */
+.back-button {
+    background-color: transparent;
+    color: #6c757d;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.back-button:hover {
+    color: #5a6268;
+}
+
+/* Estilos para botones grandes */
+.big-button {
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.big-button span {
+    font-size: 1.4rem;
+}
+
+/* Estilos para alertas personalizadas */
+.alerta-personalizada {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.alerta-contenido {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.alerta-contenido button {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+/* Estilos para modales */
+.modal-active #registros h2 {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+}
+
+.modal-content button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content button:last-child {
+    background-color: #dc3545;
+}
+
+
+/* Ajustes para el contenedor de registros */
+#registros {
+    position: relative;
+    height: calc(100vh - 60px); /* Ajusta para las pestañas en la parte inferior */
+    overflow-y: auto;
+    padding-top: 0px; /* Espacio para el título fijo */
+}
+
+/* Estilo para el título fijo */
+#registros h2 {
+    position: sticky;
+    top: -10px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 30px 0;
+    margin: 0;
+    text-align: center;
+    font-size: 35px; /* Ajusta este tamaño para que coincida con "Alcoholímetro" */
+    font-weight: bold;
+    z-index: 1001;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0px; /* Altura fija para el título */
+}
+
+/* Ajustes para el contenido scrollable */
+#registrosContenido {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 10px; /* Espacio adicional después del título */
+}
+
+/* Asegurarse de que el contenido no se oculte detrás del título fijo */
+#registrosContenido > div:first-child {
+    margin-top: 10px;
+}
+
+/* Asegurar que el fondo blanco cubra todo el ancho */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ajuste adicional para evitar scroll en la barra de estado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px; /* Ajusta esta altura según sea necesario */
+    background-color: white;
+    z-index: 1002; /* Asegura que esté por encima de todo, incluso del título */
+}
+
+/* Estilos para la información de versión */
+.version-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 12px;
+    color: #888;
+    background-color: white;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media screen and (max-width: 480px) {
     .container {
-        padding-top: max(env(safe-area-inset-top), 20px);
+        padding: 2cm 20px 20px;
     }
-    
-    .gender-symbols {
-        margin-top: 40px;
+
+    #screen1 button {
+        width: 90%;
+        font-size: 1.2rem;
     }
-    
-    button, input, select {
-        -webkit-appearance: none;
+
+    h1 {
+        font-size: 2rem;
     }
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .container {
+        max-width: 500px;
+    }
+
+    #screen1 button {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .container {
+        max-width: 600px;
+    }
+
+    #screen1 button {
+        width: 60%;
+    }
+}
+
+/* Ajustes generales para mejorar la adaptabilidad */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajuste para el fondo blanco detrás de las pestañas */
+.container::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.2cm;
+    background-color: #fff;
+    z-index: 999;
+}
+
+/* Ajustes adicionales para el contenido */
+#content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: calc(90px + 0.8cm);
+    margin-top: 2cm;
+}
+
+/* Asegurarse de que el contenedor de registros tenga un fondo blanco */
+#registros {
+    background-color: #fff;
+    min-height: 100%;
+}
+
+/* Estilos para la segunda pantalla (cerveza, vino, combinado) */
+#screen2Cerveza select,
+#screen2Cerveza input,
+#screen2Vino select,
+#screen2Vino input,
+#screen2Combinado select,
+#screen2Combinado input {
+    font-size: 1.5rem;
+    padding: 1.3rem;
+    margin-bottom: 40px;
+    width: 95%;
+    max-width: 370px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#screen2Cerveza button,
+#screen2Vino button,
+#screen2Combinado button {
+    font-size: 2rem !important;
+    width: 95%;
+    max-width: 370px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+#screen2Cerveza button:hover,
+#screen2Vino button:hover,
+#screen2Combinado button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos específicos para los inputs de cantidad y selección de producto */
+#unidadesCerveza,
+#unidadesVino,
+#unidadesCombinado,
+#tipoCerveza,
+#combinadaCon {
+    font-size: 1.5rem;
+    padding: 1.3rem;
+    margin-bottom: 50px;
+}
+
+/* Estilos específicos para el botón de atrás en la segunda pantalla */
+#screen2Cerveza .back-button,
+#screen2Vino .back-button,
+#screen2Combinado .back-button {
+    background-color: transparent;
+    color: #6c757d;
+    border: none;
+    padding: 0.3rem 0.6rem;  /* Reducido el padding para hacerlo más pequeño */
+    cursor: pointer;
+    font-size: 0.8rem;  /* Reducido el tamaño de fuente */
+    text-align: center;
+    transition: color 0.3s ease;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    width: auto;  /* Ancho automático en lugar de 100% */
+    box-shadow: none;  /* Elimina la sombra si no la desea */
+}
+
+#screen2Cerveza .back-button:hover,
+#screen2Vino .back-button:hover,
+#screen2Combinado .back-button:hover {
+    color: #5a6268;
+    transform: none;  /* Elimina la transformación al hacer hover si no la desea */
+}
+/* Estilos generales para el botón de información */
+.info-button,
+#screen3 .info-button {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background-color: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: #666 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transition: background-color 0.3s !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    box-shadow: none !important;
+}
+
+.info-button:hover,
+#screen3 .info-button:hover {
+    background-color: #e0e0e0 !important;
+}
+
+.info-screen {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.info-content {
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: flex;
+}
+
+.info-title {
+    font-size: 1.7em;
+    margin-bottom: 15px;
+}
+
+.info-message {
+    font-size: 1.3em;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.close-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+/* Estilos para la pantalla de Resultado */
+#screen3 .consumo-mensaje {
+    font-size: 1rem;
+    white-space: nowrap;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#screen3 .calorias {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#screen3 .azucar {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#alcoholimetro {
+    margin-top: 80px !important;
+}
+
+#alcoholimetroMensaje {
+    padding-top: 40px !important;
+}
+
+Version
