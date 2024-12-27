@@ -1016,4 +1016,49 @@ body {
     padding-top: 40px !important;
 }
 
-Version
+/* Dispositivos pequeños (iPhone 8 y similares) */
+@media screen and (max-width: 375px) {
+  .gender-symbol {
+    width: 60px;
+    height: 60px;
+  }
+  
+  #screen1 button {
+    font-size: 1.5rem !important;
+    padding: 15px 0;
+  }
+  
+  #peso {
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Dispositivos medianos */
+@media screen and (min-width: 376px) and (max-width: 428px) {
+  .gender-symbol {
+    width: 70px;
+    height: 70px;
+  }
+  
+  #screen1 button {
+    font-size: 1.8rem !important;
+    padding: 18px 0;
+  }
+}
+
+/* Dispositivos grandes (iPhone 13 Pro Max y similares) */
+@media screen and (min-width: 429px) {
+  .gender-symbol {
+    width: 80px;
+    height: 80px;
+  }
+  
+  #screen1 button {
+    font-size: 2rem !important;
+    padding: 20px 0;
+  }
+}
