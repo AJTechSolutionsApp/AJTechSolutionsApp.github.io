@@ -1,113 +1,139 @@
 /* Base styles */
 :root {
-    --safe-area-inset-top: env(safe-area-inset-top, 0px);
-    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+   --safe-area-inset-top: env(safe-area-inset-top, 0px);
+   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Core styles (mantener los estilos base actuales) */
-[Los estilos actuales se mantienen igual hasta las media queries]
-
-/* Responsive Design - iPhone Specific */
-/* iPhone 8, SE 2020 (375x667) */
-@media screen and (min-width: 375px) and (max-height: 667px) {
-    .container {
-        padding: 1cm 15px 15px;
-        margin-top: 30px;
-    }
-    
-    .gender-symbol {
-        width: 55px;
-        height: 55px;
-    }
-    
-    #screen1 button {
-        font-size: 1.4rem !important;
-        padding: 12px 0;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
+/* iPhone 8, SE 2020, SE 2022 (375x667) */
+@media screen and (device-width: 375px) and (device-height: 667px) {
+   .container {
+       padding: 1.2rem 1rem;
+       max-width: 375px;
+   }
+   .gender-symbol {
+       width: 50px;
+       height: 50px;
+   }
+   #screen1 button {
+       font-size: 1.3rem !important;
+       padding: 10px;
+       margin-bottom: 12px;
+   }
 }
 
-/* iPhone 12, 13, 14 (390x844) */
-@media screen and (min-width: 390px) and (min-height: 844px) {
-    .container {
-        padding-top: calc(var(--safe-area-inset-top) + 2cm);
-    }
-    
-    .gender-symbol {
-        width: 65px;
-        height: 65px;
-    }
-    
-    #screen1 button {
-        font-size: 1.6rem !important;
-        padding: 15px 0;
-    }
+/* iPhone X/XS/11 Pro (375x812) */
+@media screen and (device-width: 375px) and (device-height: 812px) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 1.5rem);
+       max-width: 375px;
+   }
+   .gender-symbol {
+       width: 55px;
+       height: 55px;
+   }
+   #screen1 button {
+       font-size: 1.4rem !important;
+       padding: 12px;
+   }
 }
 
-/* iPhone Pro Max models (428x926) */
-@media screen and (min-width: 428px) {
-    .container {
-        max-width: 428px;
-        padding-top: calc(var(--safe-area-inset-top) + 2.2cm);
-    }
-    
-    .gender-symbol {
-        width: 75px;
-        height: 75px;
-    }
-    
-    #screen1 button {
-        font-size: 1.8rem !important;
-        padding: 18px 0;
-    }
+/* iPhone XR/11/12/13/14 (390x844) */
+@media screen and (device-width: 390px) and (device-height: 844px) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 1.8rem);
+       max-width: 390px;
+   }
+   .gender-symbol {
+       width: 60px;
+       height: 60px;
+   }
+   #screen1 button {
+       font-size: 1.5rem !important;
+       padding: 14px;
+   }
 }
 
-/* Notch & Dynamic Island Support */
-@supports (padding-top: constant(safe-area-inset-top)) {
-    .container {
-        padding-top: calc(constant(safe-area-inset-top) + 2cm);
-    }
-    
-    .tabs {
-        padding-bottom: calc(constant(safe-area-inset-bottom) + 25px);
-    }
+/* iPhone 12/13/14 Pro (390x844) */
+@media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 2rem);
+   }
 }
 
-@supports (padding-top: env(safe-area-inset-top)) {
-    .container {
-        padding-top: calc(env(safe-area-inset-top) + 2cm);
-    }
-    
-    .tabs {
-        padding-bottom: calc(env(safe-area-inset-bottom) + 25px);
-    }
+/* iPhone 12/13/14 Pro Max (428x926) */
+@media screen and (device-width: 428px) and (device-height: 926px) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 2.2rem);
+       max-width: 428px;
+   }
+   .gender-symbol {
+       width: 65px;
+       height: 65px;
+   }
+   #screen1 button {
+       font-size: 1.6rem !important;
+       padding: 16px;
+   }
 }
 
-/* Adjustments for landscape mode */
+/* iPhone 14 Pro (393x852) */
+@media screen and (device-width: 393px) and (device-height: 852px) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 2.4rem);
+       max-width: 393px;
+   }
+}
+
+/* iPhone 14 Pro Max (430x932) */
+@media screen and (device-width: 430px) and (device-height: 932px) {
+   .container {
+       padding-top: calc(var(--safe-area-inset-top) + 2.5rem);
+       max-width: 430px;
+   }
+   .gender-symbol {
+       width: 70px;
+       height: 70px;
+   }
+   #screen1 button {
+       font-size: 1.7rem !important;
+       padding: 18px;
+   }
+}
+
+/* Dynamic Island & Notch Support */
+@supports (padding-top: constant(safe-area-inset-top)) or (padding-top: env(safe-area-inset-top)) {
+   .container {
+       padding-top: calc(env(safe-area-inset-top, constant(safe-area-inset-top)) + 2rem);
+   }
+   .tabs {
+       padding-bottom: calc(env(safe-area-inset-bottom, constant(safe-area-inset-bottom)) + 1.5rem);
+   }
+}
+
+/* Landscape Mode */
 @media screen and (orientation: landscape) {
-    .container {
-        padding-top: 1cm;
-    }
-    
-    .gender-symbols {
-        margin-bottom: 1rem;
-    }
-    
-    #screen1 button {
-        margin-bottom: 20px;
-    }
+   .container {
+       padding-top: 1rem;
+       padding-bottom: calc(var(--safe-area-inset-bottom) + 1rem);
+   }
+   .gender-symbols {
+       display: flex;
+       justify-content: center;
+       gap: 2rem;
+       margin-bottom: 1rem;
+   }
+   #screen1 button {
+       margin-bottom: 0.8rem;
+   }
 }
 
-/* High-end device optimizations */
-@media (-webkit-min-device-pixel-ratio: 3) {
-    .gender-symbol,
-    .tab-icon,
-    button {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-    }
+/* Performance Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+   .gender-symbol,
+   .tab-icon,
+   button {
+       transform: translateZ(0);
+       backface-visibility: hidden;
+       -webkit-font-smoothing: antialiased;
+   }
 }
