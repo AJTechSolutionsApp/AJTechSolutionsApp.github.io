@@ -20,6 +20,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 9999;
         }
         .popup {
             background-color: white;
@@ -97,18 +98,13 @@
                 6. Se recomienda encarecidamente no conducir ni operar maquinaria después de consumir alcohol, independientemente de los resultados mostrados por esta aplicación.
             </p>
             <p>
-                7. La aplicación puede requerir acceso a su ubicación para brindarle ciertos servicios, como la sugerencia de servicios de taxi en su área. Su ubicación no se almacenará ni compartirá con terceros sin su consentimiento explícito. Consulte nuestra Política de Privacidad para más detalles.
+                7. La aplicación puede requerir acceso a su ubicación para brindarle ciertos servicios, como la sugerencia de servicios de taxi en su área. Su ubicación no se almacenará ni compartirá con terceros sin su consentimiento explícito.
             </p>
             <p>
                 8. La aplicación puede incluir contenido de terceros, como anuncios, que no son gestionados ni supervisados por AJ TechSolutions. No asumimos responsabilidad por la precisión o el contenido de dichos anuncios.
             </p>
             <p>
                 9. AJ TechSolutions se reserva el derecho de modificar este acuerdo en cualquier momento. Le notificaremos de los cambios importantes y le recomendamos revisar los términos periódicamente.
-            </p>
-            <p>
-                Para más detalles sobre la recolección y manejo de datos, consulte
-                nuestra <a href="https://www.termsfeed.com/live/10ed94ec-b672-45cf-a9c3-3fb1233a4b64" target="_blank">Política de Privacidad</a> y
-                <a href="https://www.termsfeed.com/live/36671b4e-bce4-4c3c-b518-7271de49f93e" target="_blank">Aviso Legal</a>.
             </p>
             <div class="checkbox-container">
                 <input type="checkbox" id="acceptCheckbox">
@@ -125,9 +121,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const checkbox = document.getElementById('acceptCheckbox');
             const continueButton = document.getElementById('continueButton');
+            const cancelButton = document.getElementById('cancelButton');
 
             checkbox.addEventListener('change', function() {
                 continueButton.disabled = !this.checked;
+            });
+
+            continueButton.addEventListener('click', function() {
+                localStorage.setItem('userAgreement', 'accepted');
+                window.location.href = '/index.html';
+            });
+
+            cancelButton.addEventListener('click', function() {
+                window.close();
             });
         });
     </script>
