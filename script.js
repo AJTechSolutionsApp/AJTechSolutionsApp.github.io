@@ -5,18 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const caloriasPorMl = {
-   cerveza: 0.43,
-   vino: 0.82,
-   combinado: 0.8,
-   combinada: {
-       cola: 0.4,
-       colaZero: 0.0,
-       gaseosaLimonNaranja: 0.5,
-       gaseosa: 0.5,
-       solo: 0.0
-   }
+    cerveza: 0.43,
+    vino: 0.73,
+    combinado: 2.23,
+    combinada: {
+        cola: 0.42,
+        colaZero: 0.0,
+        gaseosaLimonNaranja: 0.43,
+        gaseosa: 0.40,
+        solo: 0.0
+    }
 };
-
 const graduacionAlcohol = {
    cerveza: 0.05,
    vino: 0.12,
@@ -24,16 +23,21 @@ const graduacionAlcohol = {
 };
 
 const azucarPorMl = {
-   cerveza: 0.003,
-   vino: 0.002,
-   combinada: {
-       cola: 0.106,
-       colaZero: 0,
-       gaseosaLimonNaranja: 0.106,
-       gaseosa: 0.09,
-       solo: 0
-   }
+    cerveza: 0.009,
+    vino: {
+        frizzante: 0.095,  // 95g/L = 0.095g/ml
+        tinto: 0.003,
+        blanco: 0.003
+    },
+    combinada: {
+        cola: 0.106,
+        colaZero: 0,
+        gaseosaLimonNaranja: 0.105,
+        gaseosa: 0.09,
+        solo: 0
+    }
 };
+
 
 let pesoCorporal = 0;
 let caloriasAcumuladas = 0;
