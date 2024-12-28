@@ -1,87 +1,80 @@
-/* Importación de fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@700&display=swap');
 
-/* Reset y estilos base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Estilos generales del body y container */
 body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 50px);
+    font-family: 'Poppins', sans-serif;
     background-color: #fff;
 }
 
 .container {
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2cm 20px 20px;
+    box-sizing: border-box;
     min-height: 100vh;
-    padding: 60px 20px 100px;
-    margin: 0 auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: env(safe-area-inset-top, 50px);
     background-color: #fff;
-    overflow-x: hidden;
 }
 
-/* Ajustes para AdSense */
-#adContainer {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 10px 0;
-    background-color: #f0f0f0;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 998;
-}
-
-/* Estilos de las pantallas */
+/* Estilos generales para pantallas */
 .screen {
     display: none;
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
-.active {
+.screen.active {
     display: block;
 }
 
-/* Estilos para los símbolos de género */
-.gender-symbols {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 20px 0;
-}
-
-.gender-symbol {
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: transform 0.3s ease, fill 0.3s ease;
+/* Estilos para el título */
+h1 {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 /* Estilos para inputs y botones */
-input, select, button {
-    width: 100%;
-    max-width: 400px;
+select, input, button {
+    width: 95%;
+    max-width: 370px;
     padding: 15px;
     margin: 10px auto;
     border: 1px solid #ddd;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 1.5rem;
+    font-family: inherit;
     display: block;
+    background-color: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%23666'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 40px;
 }
 
 button {
@@ -90,7 +83,52 @@ button {
     border: none;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+/* Estilos específicos para screen1 */
+#screen1 button {
+    font-size: 2rem !important;
+    padding: 20px 0;
+    animation: latido 1.5s ease-in-out infinite;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Estilos para los símbolos de género */
+.gender-symbols {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0 40px;
+}
+
+.gender-symbol {
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    transition: transform 0.3s ease, fill 0.3s ease;
+    fill: #ccc;
+}
+
+.gender-symbol:hover {
+    transform: scale(1.4);
+}
+
+.gender-symbol.selected {
+    fill: #28a745;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Navegación inferior */
@@ -102,8 +140,8 @@ button {
     background-color: white;
     display: flex;
     justify-content: space-around;
-    padding: 15px 0;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 25px 0 calc(env(safe-area-inset-bottom, 15px) + 30px);
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
     z-index: 1000;
     max-width: 480px;
     margin: 0 auto;
@@ -114,73 +152,122 @@ button {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #666;
-    font-size: 14px;
-    gap: 5px;
+    color: #919191;
+    font-size: 15px;
+    padding-top: 20px;
 }
 
-/* Resultados y mensajes */
-#alcoholimetroMensaje {
+.tab.active {
+    color: #128C7E;
+}
+
+.tab-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* Estilos para screen3 (Resultados) */
+#screen3 {
+    position: relative;
+}
+
+#screen3 .consumo-mensaje {
+    font-size: 1rem;
     text-align: center;
-    padding: 20px;
+    margin-bottom: 1rem;
 }
 
+#screen3 .calorias {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#screen3 button {
+    font-size: 2rem !important;
+    padding: 20px 0;
+}
+
+/* Estilos para el alcoholímetro */
 #advertencia {
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    font-size: 1.45rem;
     line-height: 1.4;
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-/* Media queries para diferentes tamaños de pantalla */
+#advertencia.advertencia-amarilla {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 3px solid #ffeeba;
+}
+
+#advertencia.advertencia-roja {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Botón de información */
+.info-button {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background-color: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: #666 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Version info */
+.version-info {
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 70px);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 5px;
+    z-index: 997;
+}
+
+/* Media queries */
 @media screen and (max-width: 480px) {
     .container {
-        padding: 50px 15px 80px;
+        padding: 1cm 15px 80px;
     }
     
-    input, select, button {
-        font-size: 16px;
-        padding: 12px;
+    h1 {
+        font-size: 2rem;
     }
     
-    .gender-symbols {
-        gap: 20px;
-    }
-    
-    .gender-symbol {
-        width: 50px;
-        height: 50px;
+    #screen1 button {
+        font-size: 1.8rem !important;
     }
 }
 
-@media screen and (min-width: 481px) {
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #f5f5f5;
-        z-index: -1;
-    }
-    
-    .container {
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        margin: 20px auto;
-        border-radius: 15px;
-    }
-}
-
-/* Ajustes para Safari en iOS */
 @supports (-webkit-touch-callout: none) {
     .container {
-        padding-bottom: 100px;
+        padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 80px);
+        min-height: -webkit-fill-available;
     }
     
-    input, select, button {
-        -webkit-appearance: none;
-        appearance: none;
+    .tabs {
+        padding-bottom: calc(env(safe-area-inset-bottom, 15px) + 15px);
     }
 }
