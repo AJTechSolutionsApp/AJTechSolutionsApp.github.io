@@ -1,33 +1,48 @@
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', async () => {
+  let refreshing = false;
+
+  // Función para registrar el service worker
+  async function registerServiceWorker() {
     try {
-      const registration = await navigator.serviceWorker.register('/service-worker.js');
-      
-      // Verificar actualizaciones cada vez que se carga la página
+      const registration = await navigator.serviceWorker.register('/service-worker.js', {
+        updateViaCache: 'none' // Deshabilita el caché del navegador para el service worker
+      });
+
+      // Comprobar actualizaciones inmediatamente
       registration.update();
-      
-      // Detectar nuevas versiones
+
+      // Comprobar actualizaciones cada 5 minutos
+      setInterval(() => {
+        registration.update();
+        console.log('Checking for updates...');
+      }, 5 * 60 * 1000);
+
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // Nueva versión disponible
-            if (confirm('¡Nueva versión disponible! ¿Deseas actualizar?')) {
+            // Nueva versión disponible - notificar al usuario
+            if (confirm('¡Nueva versión disponible! ¿Deseas actualizar ahora?')) {
               newWorker.postMessage('skipWaiting');
-              window.location.reload();
             }
           }
         });
       });
     } catch (error) {
-      console.error('Error during service worker registration:', error);
+      console.error('Error registering service worker:', error);
+    }
+  }
+
+  // Detectar cuando el service worker toma el control
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
     }
   });
 
-  // Escuchar cambios del service worker
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    window.location.reload();
-  });
+  // Registrar el service worker cuando la página carge
+  window.addEventListener('load', registerServiceWorker);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
