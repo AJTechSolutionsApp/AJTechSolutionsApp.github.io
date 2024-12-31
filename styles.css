@@ -244,6 +244,15 @@ button {
     color: #666;
     padding: 5px;
     z-index: 997;
+    background-color: white; /* Añadido para asegurar visibilidad */
+    margin-bottom: 10px;    /* Añadido para separación */
+}
+
+/* Ajuste para iOS */
+@supports (-webkit-touch-callout: none) {
+    .version-info {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 90px);
+    }
 }
 
 /* Media queries */
@@ -270,4 +279,39 @@ button {
     .tabs {
         padding-bottom: calc(env(safe-area-inset-bottom, 15px) + 15px);
     }
+}
+
+#taxiNumber {
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+#taxiNumber a {
+    display: block;
+    width: 100%;
+    max-width: 370px;
+    margin: 0 auto;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+#taxiNumber a:active {
+    transform: scale(0.98);
+    background-color: #218838;
+}
+
+#taxiNumber a:before {
+    content: '☎️';
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
