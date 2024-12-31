@@ -140,7 +140,7 @@ button {
     background-color: white;
     display: flex;
     justify-content: space-around;
-    padding: 20px 0 calc(env(safe-area-inset-bottom, 15px) + 20px);
+    padding: 20px 0 calc(env(safe-area-inset-bottom, 10px) + 15px);
     box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
     z-index: 1000;
     max-width: 480px;
