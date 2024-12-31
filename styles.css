@@ -24,12 +24,12 @@ body {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    padding: 1.5cm 20px 20px;
+    padding: 1cm 20px 20px;
     box-sizing: border-box;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin-top: env(safe-area-inset-top, 50px);
+    margin-top: env(safe-area-inset-top, 40px);
     background-color: #fff;
 }
 
