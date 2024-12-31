@@ -545,17 +545,117 @@ function mostrarModalConfirmacion(mensaje, onConfirm) {
     }, { once: true });
 }
 
-function mostrarAlerta(mensaje) {
-   const alertaDiv = document.createElement('div');
-   alertaDiv.className = 'alerta-personalizada';
-   alertaDiv.innerHTML = `
-       <div class="alerta-contenido">
-           <h3>Happy Hours dice:</h3>
-           <p>${mensaje}</p>
-           <button onclick="this.parentElement.parentElement.remove()">OK</button>
-       </div>
-   `;
-   document.body.appendChild(alertaDiv);
+function mostrarAlerta(mensaje, onConfirm) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-popup';
+    modal.innerHTML = `
+        <div class="modal-popup-content">
+            <h3 style="margin-bottom: 15px;">Happy Hours dice:</h3>
+            <p style="margin-bottom: 20px;">${mensaje}</p>
+            <div class="modal-popup-buttons">
+                <button class="modal-popup-button modal-popup-button-confirm" id="confirmarAlerta">
+                    OK
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Animación de entrada
+    modal.style.opacity = '0';
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.transition = 'opacity 0.3s ease-in-out';
+    }, 10);
+
+    function cerrarModal() {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+            if (typeof onConfirm === 'function') {
+                onConfirm();
+            }
+        }, 300);
+    }
+
+    document.getElementById('confirmarAlerta').onclick = cerrarModal;
+
+    // Cerrar al hacer clic fuera del modal
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            cerrarModal();
+        }
+    };
+
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+        }
+    }, { once: true });
+}
+
+// Para mantener consistencia, también actualizamos la función mostrarModalConfirmacion
+function mostrarModalConfirmacion(mensaje, onConfirm, onCancel) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-popup';
+    modal.innerHTML = `
+        <div class="modal-popup-content">
+            <h3 style="margin-bottom: 15px;">Happy Hours pregunta:</h3>
+            <p style="margin-bottom: 20px;">${mensaje}</p>
+            <div class="modal-popup-buttons">
+                <button class="modal-popup-button modal-popup-button-cancel" id="cancelarAccion">
+                    No
+                </button>
+                <button class="modal-popup-button modal-popup-button-confirm" id="confirmarAccion">
+                    Sí
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Animación de entrada
+    modal.style.opacity = '0';
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.transition = 'opacity 0.3s ease-in-out';
+    }, 10);
+
+    function cerrarModal() {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 300);
+    }
+
+    document.getElementById('confirmarAccion').onclick = function() {
+        cerrarModal();
+        if (typeof onConfirm === 'function') onConfirm();
+    };
+
+    document.getElementById('cancelarAccion').onclick = function() {
+        cerrarModal();
+        if (typeof onCancel === 'function') onCancel();
+    };
+
+    // Cerrar al hacer clic fuera del modal
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            cerrarModal();
+            if (typeof onCancel === 'function') onCancel();
+        }
+    };
+
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+            if (typeof onCancel === 'function') onCancel();
+        }
+    }, { once: true });
 }
 
 function locationPermissionGranted() {
