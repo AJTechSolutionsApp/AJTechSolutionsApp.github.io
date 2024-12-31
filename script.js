@@ -152,19 +152,42 @@ function actualizarAdvertencia() {
 }
 
 function extraerYLlamarTaxi() {
-   alert("No se puede realizar la llamada desde este dispositivo.");
+    // Obtener la ubicación del usuario
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                
+                // Obtener el nombre de la ciudad usando Nominatim
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const ciudad = data.address.city || data.address.town || data.address.village || '';
+                        let searchQuery = 'radio taxi';
+                        
+                        if (ciudad) {
+                            searchQuery += ' ' + ciudad;
+                        }
+                        
+                        // Abrir la búsqueda en una nueva pestaña
+                        window.open(`https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`, '_blank');
+                    })
+                    .catch(() => {
+                        // Si falla la obtención de la ciudad, hacer búsqueda genérica
+                        window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+                    });
+            },
+            function(error) {
+                // Si falla la geolocalización, hacer búsqueda genérica
+                window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+            }
+        );
+    } else {
+        // Si no hay soporte de geolocalización, hacer búsqueda genérica
+        window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+    }
 }
-
-document.addEventListener('click', function(e) {
-   var target = e.target;
-   while(target && target.tagName !== 'A') {
-       target = target.parentNode;
-   }
-   if(target && target.href && target.href.startsWith('tel:')) {
-       e.preventDefault();
-       window.location.href = 'tel:' + target.href.substring(4);
-   }
-});
 
 function mostrarResultados() {
    document.getElementById('resultadoCalorias').textContent = caloriasAcumuladas.toFixed(2);
