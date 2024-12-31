@@ -216,34 +216,22 @@ function extraerYLlamarTaxi() {
                             searchQuery += ' ' + ciudad;
                         }
                         
-                        try {
-                            // En lugar de window.open, usamos window.location o un enlace
-                            const searchURL = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
-                            
-                            // Creamos un enlace temporal
-                            const link = document.createElement('a');
-                            link.href = searchURL;
-                            link.target = '_blank';
-                            link.rel = 'noopener noreferrer';
-                            
-                            // Simulamos el clic
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                        } catch (error) {
-                            mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
-                        }
+                        // Modificación específica para iOS
+                        const searchURL = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+                        
+                        // En iOS, abrimos en una nueva ventana
+                        window.open(searchURL, '_blank');
                     })
                     .catch(() => {
-                        mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
+                        mostrarAlerta('HappyHours dice: No se puede realizar la búsqueda en este momento.');
                     });
             },
             function(error) {
-                mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
+                mostrarAlerta('HappyHours dice: No se puede acceder a la ubicación.');
             }
         );
     } else {
-        mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
+        mostrarAlerta('HappyHours dice: La geolocalización no está disponible.');
     }
 }
 
