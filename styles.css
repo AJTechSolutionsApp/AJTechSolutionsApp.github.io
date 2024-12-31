@@ -236,30 +236,27 @@ button {
 /* Version info */
 .version-info {
     position: fixed;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 110px); /* Ajustado para estar justo encima de los tabs */
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 130px); /* Aumentado el espacio */
     left: 0;
     width: 100%;
     text-align: center;
     font-size: 12px;
     color: #666;
     padding: 5px;
-    z-index: 996;  /* Reducido para estar debajo de los tabs */
+    z-index: 996;
     background-color: transparent;
+    pointer-events: none; /* Evita que interfiera con los clicks */
 }
 
-.tabs {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0 calc(env(safe-area-inset-bottom, 15px) + 15px);
-    box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
-    z-index: 1000;
-    max-width: 480px;
-    margin: 0 auto;
+/* Ajuste específico para iOS */
+@supports (-webkit-touch-callout: none) {
+    .version-info {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); /* Más espacio en iOS */
+    }
+    
+    .tabs {
+        padding-bottom: calc(env(safe-area-inset-bottom, 15px) + 20px); /* Ajuste para las tabs */
+    }
 }
 /* Ajuste para iOS */
 @supports (-webkit-touch-callout: none) {
