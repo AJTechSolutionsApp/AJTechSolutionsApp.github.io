@@ -501,28 +501,59 @@ function eliminarRegistro(index) {
 }
 
 function mostrarModalConfirmacion(mensaje, onConfirm) {
-   const modal = document.createElement('div');
-   modal.className = 'modal';
-   modal.innerHTML = `
-       <div class="modal-content">
-           <p>${mensaje}</p>
-           <button id="confirmarEliminar">Sí, eliminar</button>
-           <button id="cancelarEliminar">Cancelar</button>
-       </div>
-   `;
+    const modal = document.createElement('div');
+    modal.className = 'modal-popup';
+    modal.innerHTML = `
+        <div class="modal-popup-content">
+            <h3 style="margin-bottom: 15px;">Confirmar acción</h3>
+            <p style="margin-bottom: 20px;">${mensaje}</p>
+            <div class="modal-popup-buttons">
+                <button class="modal-popup-button modal-popup-button-cancel" id="cancelarEliminar">
+                    Cancelar
+                </button>
+                <button class="modal-popup-button modal-popup-button-confirm" id="confirmarEliminar">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    `;
 
-   document.body.appendChild(modal);
-   document.body.classList.add('modal-active');
+    document.body.appendChild(modal);
 
-   document.getElementById('confirmarEliminar').onclick = function() {
-       onConfirm();
-       document.body.removeChild(modal);
-       document.body.classList.remove('modal-active');
-   };
-   document.getElementById('cancelarEliminar').onclick = function() {
-       document.body.removeChild(modal);
-       document.body.classList.remove('modal-active');
-   };
+    // Animación de entrada
+    modal.style.opacity = '0';
+    setTimeout(() => {
+        modal.style.opacity = '1';
+        modal.style.transition = 'opacity 0.3s ease-in-out';
+    }, 10);
+
+    function cerrarModal() {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 300);
+    }
+
+    document.getElementById('confirmarEliminar').onclick = function() {
+        onConfirm();
+        cerrarModal();
+    };
+
+    document.getElementById('cancelarEliminar').onclick = cerrarModal;
+
+    // Cerrar al hacer clic fuera del modal
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            cerrarModal();
+        }
+    };
+
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+        }
+    }, { once: true });
 }
 
 function mostrarAlerta(mensaje) {
