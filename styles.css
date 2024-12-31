@@ -236,7 +236,7 @@ button {
 /* Version info */
 .version-info {
     position: fixed;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 130px); /* Aumentado el espacio */
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 100px); /* Aumentado el espacio */
     left: 0;
     width: 100%;
     text-align: center;
