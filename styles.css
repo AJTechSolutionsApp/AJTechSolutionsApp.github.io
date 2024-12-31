@@ -236,16 +236,15 @@ button {
 /* Version info */
 .version-info {
     position: fixed;
-    bottom: 0;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 110px); /* Ajustado para estar justo encima de los tabs */
     left: 0;
     width: 100%;
     text-align: center;
     font-size: 12px;
     color: #666;
     padding: 5px;
-    z-index: 1001;  /* Aumentado para que esté por encima de los tabs que tienen z-index: 1000 */
-    background-color: white;
-    padding-bottom: calc(env(safe-area-inset-bottom, 15px) + 50px); /* Ajustado para estar justo encima de los tabs */
+    z-index: 996;  /* Reducido para estar debajo de los tabs */
+    background-color: transparent;
 }
 
 .tabs {
@@ -256,13 +255,12 @@ button {
     background-color: white;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0 calc(env(safe-area-inset-bottom, 15px) + 15px);
+    padding: 15px 0 calc(env(safe-area-inset-bottom, 15px) + 15px);
     box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
     z-index: 1000;
     max-width: 480px;
     margin: 0 auto;
 }
-
 /* Ajuste para iOS */
 @supports (-webkit-touch-callout: none) {
     .version-info {
