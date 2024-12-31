@@ -157,7 +157,7 @@ function actualizarAdvertencia() {
            }
 
            taxiNumberElement.innerHTML = `
-                       ☎️ <a href="#" onclick="extraerYLlamarTaxi(); return false;">Llame a su taxi </a>
+                         <a href="#" onclick="extraerYLlamarTaxi(); return false;">Llame a su taxi </a>
                        <br>
                        <small></small>
            `;
