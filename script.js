@@ -1,3 +1,35 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('/service-worker.js');
+      
+      // Verificar actualizaciones cada vez que se carga la página
+      registration.update();
+      
+      // Detectar nuevas versiones
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // Nueva versión disponible
+            if (confirm('¡Nueva versión disponible! ¿Deseas actualizar?')) {
+              newWorker.postMessage('skipWaiting');
+              window.location.reload();
+            }
+          }
+        });
+      });
+    } catch (error) {
+      console.error('Error during service worker registration:', error);
+    }
+  });
+
+  // Escuchar cambios del service worker
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    window.location.reload();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
    if (!localStorage.getItem('userAgreement')) {
        window.location.href = 'assets/www/user-agreement.html';
