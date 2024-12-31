@@ -1,11 +1,11 @@
+// Agregar este código en script.js
 if ('serviceWorker' in navigator) {
   let refreshing = false;
 
-  // Función para registrar el service worker
   async function registerServiceWorker() {
     try {
       const registration = await navigator.serviceWorker.register('/service-worker.js', {
-        updateViaCache: 'none' // Deshabilita el caché del navegador para el service worker
+        updateViaCache: 'none'
       });
 
       // Comprobar actualizaciones inmediatamente
@@ -14,22 +14,23 @@ if ('serviceWorker' in navigator) {
       // Comprobar actualizaciones cada 5 minutos
       setInterval(() => {
         registration.update();
-        console.log('Checking for updates...');
+        console.log('Buscando actualizaciones...');
       }, 5 * 60 * 1000);
 
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // Nueva versión disponible - notificar al usuario
-            if (confirm('¡Nueva versión disponible! ¿Deseas actualizar ahora?')) {
+            mostrarModalConfirmacion('HappyHours pregunta: ¿Deseas actualizar a la nueva versión?', function() {
               newWorker.postMessage('skipWaiting');
-            }
+            }, function() {
+              // No hacer nada si el usuario cancela
+            });
           }
         });
       });
     } catch (error) {
-      console.error('Error registering service worker:', error);
+      console.error('Error al registrar el service worker:', error);
     }
   }
 
@@ -41,7 +42,7 @@ if ('serviceWorker' in navigator) {
     }
   });
 
-  // Registrar el service worker cuando la página carge
+  // Registrar el service worker cuando la página cargue
   window.addEventListener('load', registerServiceWorker);
 }
 
