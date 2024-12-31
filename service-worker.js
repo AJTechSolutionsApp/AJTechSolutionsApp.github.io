@@ -1,4 +1,5 @@
-const CACHE_VERSION = 'happyhours-v1.0.0';  // Quitamos el timestamp para más estabilidad
+// service-worker.js
+const CACHE_VERSION = 'happyhours-v1.0.0';
 const CACHE_NAME = `${CACHE_VERSION}`;
 const urlsToCache = [
   '/',
@@ -17,7 +18,6 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Cache opened');
-      // Usar configuración normal de caché para los estilos
       return cache.addAll(urlsToCache);
     }).then(() => self.skipWaiting())
   );
@@ -61,7 +61,7 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-
+  
   // Para el resto de recursos
   event.respondWith(
     fetch(event.request)
