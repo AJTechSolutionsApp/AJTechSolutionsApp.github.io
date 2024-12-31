@@ -24,9 +24,9 @@ body {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    padding: 1,5cm 20px 20px;
+    padding: 2cm 20px 20px;
     box-sizing: border-box;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin-top: env(safe-area-inset-top, 50px);
@@ -140,7 +140,7 @@ button {
     background-color: white;
     display: flex;
     justify-content: space-around;
-    padding: 25px 0 calc(env(safe-area-inset-bottom, 15px) + 30px);
+    padding: 20px 0 calc(env(safe-area-inset-bottom, 15px) + 20px);
     box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
     z-index: 1000;
     max-width: 480px;
