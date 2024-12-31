@@ -152,14 +152,12 @@ function actualizarAdvertencia() {
 }
 
 function extraerYLlamarTaxi() {
-    // Obtener la ubicación del usuario
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function(position) {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
                 
-                // Obtener el nombre de la ciudad usando Nominatim
                 fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
                     .then(response => response.json())
                     .then(data => {
@@ -170,22 +168,34 @@ function extraerYLlamarTaxi() {
                             searchQuery += ' ' + ciudad;
                         }
                         
-                        // Abrir la búsqueda en una nueva pestaña
-                        window.open(`https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`, '_blank');
+                        try {
+                            // En lugar de window.open, usamos window.location o un enlace
+                            const searchURL = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+                            
+                            // Creamos un enlace temporal
+                            const link = document.createElement('a');
+                            link.href = searchURL;
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                            
+                            // Simulamos el clic
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        } catch (error) {
+                            mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
+                        }
                     })
                     .catch(() => {
-                        // Si falla la obtención de la ciudad, hacer búsqueda genérica
-                        window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+                        mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
                     });
             },
             function(error) {
-                // Si falla la geolocalización, hacer búsqueda genérica
-                window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+                mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
             }
         );
     } else {
-        // Si no hay soporte de geolocalización, hacer búsqueda genérica
-        window.open('https://www.google.com/search?q=radio+taxi', '_blank');
+        mostrarAlerta('HappyHours dice: No se puede realizar la llamada desde este dispositivo.');
     }
 }
 
