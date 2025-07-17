@@ -149,6 +149,90 @@
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
 
+        /* Account Deletion Section */
+        .account-deletion {
+            padding: 80px 0;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+
+        .deletion-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .deletion-content h2 {
+            font-size: 2rem;
+            color: #0064c8;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .deletion-steps {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .deletion-steps h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .deletion-steps ol {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .deletion-steps li {
+            margin-bottom: 15px;
+        }
+
+        .email-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .warning-box h4 {
+            color: #856404;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #856404;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* About Section */
         .about {
             padding: 100px 0;
@@ -394,6 +478,10 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .deletion-steps {
+                padding: 30px 20px;
+            }
         }
 
         /* Animations */
@@ -410,57 +498,6 @@
 
         .fade-in {
             animation: fadeInUp 0.8s ease forwards;
-        }
-
-        /* Floating elements */
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .shape {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 40%;
-            left: 70%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
         }
     </style>
 </head>
@@ -479,6 +516,7 @@
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="#productos">Productos</a></li>
+                    <li><a href="#eliminacion">Eliminar Cuenta</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -486,11 +524,6 @@
     </header>
 
     <section class="hero" id="inicio">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
         <div class="container">
             <div class="hero-content fade-in">
                 <h1>Mejoramos tu vida diaria</h1>
@@ -538,25 +571,25 @@
                         <p class="product-subtitle">Entretenimiento Social</p>
                     </div>
                    <div class="product-description">
-    <p>La aplicación definitiva para diversión en grupo. Juegos, retos y desafíos que convierten cualquier reunión en una experiencia memorable.</p>
-    <p>Perfecta para fiestas, reuniones familiares y momentos especiales con amigos.</p>
-    
-    <!-- Botones múltiples -->
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 25px;">
-        <a href="https://play.google.com/store/apps/details?id=com.happyhoursapp.android&pli=1" 
-           class="product-link" 
-           target="_blank" 
-           style="background: linear-gradient(135deg, #ff6b6b, #ff8e53); display: flex; align-items: center; gap: 8px;">
-            📱 Descargar App
-        </a>
-        <a href="https://ajtechsolutionsapp.github.io/happy-hours/" 
-           class="product-link" 
-           target="_blank"
-           style="background: #666; display: flex; align-items: center; gap: 8px;">
-            🌐 Ver Demo Web
-        </a>
-    </div>
-</div>
+                        <p>La aplicación definitiva para diversión en grupo. Juegos, retos y desafíos que convierten cualquier reunión en una experiencia memorable.</p>
+                        <p>Perfecta para fiestas, reuniones familiares y momentos especiales con amigos.</p>
+                        
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 25px;">
+                            <a href="https://play.google.com/store/apps/details?id=com.happyhoursapp.android&pli=1" 
+                               class="product-link" 
+                               target="_blank" 
+                               style="background: linear-gradient(135deg, #ff6b6b, #ff8e53); display: flex; align-items: center; gap: 8px;">
+                                📱 Descargar App
+                            </a>
+                            <a href="https://ajtechsolutionsapp.github.io/happy-hours/" 
+                               class="product-link" 
+                               target="_blank"
+                               style="background: #666; display: flex; align-items: center; gap: 8px;">
+                                🌐 Ver Demo Web
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="product-card fade-in">
                     <div class="product-header">
                         <div class="product-logo ai-routine-logo">AR</div>
@@ -564,23 +597,67 @@
                         <p class="product-subtitle">Entrenador Personal IA</p>
                     </div>
                     <div class="product-description">
-    <p>El primer entrenador personal con inteligencia artificial. Rutinas personalizadas, análisis de progreso y motivación 24/7.</p>
-    <p>Revoluciona tu forma de entrenar con tecnología de vanguardia y resultados garantizados.</p>
-    
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 25px;">
-        <a href="#" 
-           class="product-link" 
-           style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1a1a; cursor: not-allowed; opacity: 0.7;">
-            🚀 Próximamente
-        </a>
-        <a href="mailto:info@avtechsolutions.com?subject=Beta%20AI%20Routine&body=Hola,%20me%20interesa%20probar%20la%20beta%20de%20AI%20Routine" 
-           class="product-link" 
-           target="_blank"
-           style="background: #0064c8;">
-            ✉️ Beta Testing
-        </a>
-    </div>
-</div>
+                        <p>El primer entrenador personal con inteligencia artificial. Rutinas personalizadas, análisis de progreso y motivación 24/7.</p>
+                        <p>Revoluciona tu forma de entrenar con tecnología de vanguardia y resultados garantizados.</p>
+                        
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 25px;">
+                            <a href="#" 
+                               class="product-link" 
+                               style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1a1a; cursor: not-allowed; opacity: 0.7;">
+                                🚀 Próximamente
+                            </a>
+                            <a href="mailto:ajtechsolutionsapp@gmail.com?subject=Beta%20AI%20Routine&body=Hola,%20me%20interesa%20probar%20la%20beta%20de%20AI%20Routine" 
+                               class="product-link" 
+                               target="_blank"
+                               style="background: #0064c8;">
+                                ✉️ Beta Testing
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="account-deletion" id="eliminacion">
+        <div class="container">
+            <div class="deletion-content">
+                <h2>🗑️ Eliminación de Cuenta y Datos</h2>
+                <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">Si deseas eliminar tu cuenta y todos los datos asociados de nuestras aplicaciones, sigue estos pasos:</p>
+                
+                <div class="deletion-steps">
+                    <h3>📋 Proceso de Eliminación</h3>
+                    <ol>
+                        <li><strong>Envía un correo electrónico</strong> a nuestro equipo de soporte desde la dirección de email asociada a tu cuenta.</li>
+                        <li><strong>Incluye la siguiente información:</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>Nombre completo registrado en la app</li>
+                                <li>Aplicación específica (Happy Hours, AI Routine, etc.)</li>
+                                <li>Motivo de la eliminación (opcional)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Confirma tu identidad</strong> respondiendo a las preguntas de verificación que te enviaremos.</li>
+                        <li><strong>Recibe confirmación</strong> de que tu cuenta y datos han sido eliminados permanentemente.</li>
+                    </ol>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="mailto:ajtechsolutionsapp@gmail.com?subject=Solicitud%20de%20Eliminación%20de%20Cuenta&body=Hola,%0A%0ASolicito%20la%20eliminación%20de%20mi%20cuenta%20y%20todos%20los%20datos%20asociados.%0A%0ANombre%20completo:%20%0AAplicación:%20%0AMotivo%20(opcional):%20%0A%0AGracias." 
+                           class="email-button">
+                            📧 Solicitar Eliminación de Cuenta
+                        </a>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Información Importante</h4>
+                    <p><strong>La eliminación de cuenta es permanente e irreversible.</strong> Una vez procesada tu solicitud:</p>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Se eliminarán todos tus datos personales, progreso y configuraciones</li>
+                        <li>No podrás recuperar tu historial de entrenamientos o logros</li>
+                        <li>Perderás acceso a funciones premium si las tenías activas</li>
+                        <li>El proceso puede tardar hasta 30 días en completarse</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -592,7 +669,7 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <span>📧</span>
-                    <span>info@avtechsolutions.com</span>
+                    <span>ajtechsolutionsapp@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <span>🌍</span>
@@ -621,7 +698,10 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#productos">Productos</a></li>
+                <li><a href="#eliminacion">Eliminar Cuenta</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="privacy.html">Política de Privacidad</a></li>
+                <li><a href="terms.html">Términos de Servicio</a></li>
             </ul>
             <div class="footer-bottom">
                 <p>&copy; 2025 AV Tech Solutions. Todos los derechos reservados. | Desarrollando tecnología que mejora vidas.</p>
@@ -659,41 +739,8 @@
         }, observerOptions);
 
         // Observar elementos que deben animarse
-        document.querySelectorAll('.product-card, .about-content, .stat').forEach(el => {
+        document.querySelectorAll('.product-card, .about-content, .stat, .deletion-content').forEach(el => {
             observer.observe(el);
-        });
-
-        // Contador animado para estadísticas
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 20);
-        }
-
-        // Activar contadores cuando sean visibles
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const numberElement = entry.target.querySelector('.stat-number');
-                    const targetValue = parseInt(numberElement.textContent);
-                    if (!isNaN(targetValue)) {
-                        animateCounter(numberElement, targetValue);
-                    }
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.stat').forEach(stat => {
-            statsObserver.observe(stat);
         });
     </script>
 </body>
